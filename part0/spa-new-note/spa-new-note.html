@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Full Stack Open 2021 - part0.6</title>
+  </head>
+  <body>
+    <div class="wsd" wsd_style="default">
+      <pre>
+        title Full Stack Open 2021 part0.6
+        note over browser:
+        browser creates a new note with the input value,
+        adds it to the list, cleans the input,
+        and redraws the list of notes
+        end note
+        browser->server: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+        note over server:
+        server validates the note
+        and creates the note formatted
+        end note
+        server->browser: HTTP 201: {"message":"note created"}
+      </pre>
+    </div>
+    <script
+      type="text/javascript"
+      src="https://www.websequencediagrams.com/service.js"
+    ></script>
+  </body>
+</html>
