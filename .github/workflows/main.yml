@@ -9,6 +9,6 @@ jobs:
       - id: foo
         uses: S0lRaK/hello-world-composite-action@v1
         with:
-          who-to-greet: 'Carlos'
+          who-to-greet: 'Carlos Garcia'
       - run: echo random-number ${{ steps.foo.outputs.random-number }}
         shell: bash
