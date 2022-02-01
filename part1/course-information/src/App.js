@@ -12,9 +12,9 @@ const Content = ({ parts }) => {
   )
 }
 
-const Part = ({ part }) => (
+const Part = ({ part: { name, exercises }}) => (
   <p>
-    {part.name} {part.exercises}
+    {name} {exercises}
   </p>
 )
 
