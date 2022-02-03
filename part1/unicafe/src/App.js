@@ -13,6 +13,16 @@ const App = () => {
   const [neutral, setNeutral] = useState(0)
   const [bad, setBad] = useState(0)
 
+  const total = good + neutral + bad
+  // calculate average score (good: 1, neutral: 0, bad: -1)
+  const average = total === 0 
+    ? 0 
+    : ((good - bad) / total).toFixed(2)
+  // calculate positive feedback percentage
+  const positivePercentage = total === 0
+    ? 0 
+    : ((good / (good + neutral + bad)) * 100).toFixed(2)
+
   return (
     <>
       <section>
@@ -35,7 +45,10 @@ const App = () => {
         <p>
           Good: {good} <br />
           Neutral: {neutral} <br />
-          Bad: {bad}
+          Bad: {bad} <br />
+          Total: {total} <br />
+          Average: {average} <br />
+          Positive: {positivePercentage} %
         </p>
       </section>
     </>
