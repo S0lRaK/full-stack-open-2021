@@ -9,6 +9,8 @@ const Button = ({ handleClick, text }) => (
   </button>
 )
 
+const StatisticsEmptyMsg = () => <p>No feedback given yet</p>
+
 const Statistics = ({ goodVotes: good, neutralVotes: neutral, badVotes: bad }) => {
   const total = good + neutral + bad
   // calculate average score (good: 1, neutral: 0, bad: -1)
@@ -25,14 +27,17 @@ const Statistics = ({ goodVotes: good, neutralVotes: neutral, badVotes: bad }) =
   return (
     <section>
       <Header text="Statistics" />
-      <p>
-        Good: {good} <br />
-        Neutral: {neutral} <br />
-        Bad: {bad} <br />
-        Total: {total} <br />
-        Average: {average} <br />
-        Positive: {positivePercentage} %
-      </p>
+      {total === 0
+        ? <StatisticsEmptyMsg />
+        : <p>
+          Good: {good} <br />
+          Neutral: {neutral} <br />
+          Bad: {bad} <br />
+          Total: {total} <br />
+          Average: {average} <br />
+          Positive: {positivePercentage} %
+        </p>
+      }
     </section>
   )
 }
