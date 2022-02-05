@@ -1,8 +1,10 @@
 import { useState } from 'react'
 // @ts-ignore
-import reactLogo from '../images/react-logo.svg'
+import reactLogo from '../icons/react-logo.svg'
 // @ts-ignore
-import viteLogo from '../images/vite-logo.svg'
+import viteLogo from '../icons/vite-logo.svg'
+// @ts-ignore
+import triangleUpIcon from '../icons/triangle-up-icon.svg'
 import './App.css'
 
 const ANECDOTES = [
@@ -18,13 +20,39 @@ const ANECDOTES = [
 const Title = ({ text }) => <h1 className='title'>{text}</h1>
 
 const Quote = ({ text }) => (
-  <blockquote>
+  <blockquote className='blockquote'>
     <p className='quote'>{text}</p>
   </blockquote>
 )
 
-const Button = ({ handleClick, text }) => (
-  <button className='button position--center' onClick={handleClick}>
+const Vote = ({ votes, setVotes, selected }) => {
+  const upVote = () => {
+    const newVotes = { ...votes }
+    newVotes[selected] = votes[selected] + 1
+    setVotes(newVotes)
+  }
+
+  return (
+    <div className='votes'>
+      <ButtonIcon
+        handleClick={upVote}
+        icon={triangleUpIcon}
+        a11yText='Upvote'
+      />
+      <span className='votes__num'>{votes[selected]}</span>
+    </div>
+  )
+}
+
+const ButtonIcon = ({ handleClick, icon, a11yText }) => (
+  <button className='button' onClick={handleClick}>
+    <img src={icon} alt='Arrow up icon' className='button--icon' />
+    <span className='screen-reader screen-reader--focusable'>{a11yText}</span>
+  </button>
+)
+
+const ButtonText = ({ handleClick, text }) => (
+  <button className='button button--text position--center' onClick={handleClick}>
     {text}
   </button>
 )
@@ -38,6 +66,15 @@ const Footer = () => (
 
 const App = () => {
   const [selected, setSelected] = useState(0)
+  const [votes, setVotes] = useState({
+    0: 0,
+    1: 0,
+    2: 0,
+    3: 0,
+    4: 0,
+    5: 0,
+    6: 0,
+  })
 
   const randomizeAnecdote = () => {
     const anecdote = Math.floor(Math.random() * ANECDOTES.length)
@@ -47,8 +84,11 @@ const App = () => {
   return (
     <>
       <Title text='Anecdote of software engineering' />
-      <Quote text={ANECDOTES[selected]} />
-      <Button handleClick={randomizeAnecdote} text='Randomize' />
+      <div className='vote-anecdote'>
+        <Vote votes={votes} setVotes={setVotes} selected={selected} />
+        <Quote text={ANECDOTES[selected]} />
+      </div>
+      <ButtonText handleClick={randomizeAnecdote} text='Randomize' />
       <Footer />
     </>
   )
