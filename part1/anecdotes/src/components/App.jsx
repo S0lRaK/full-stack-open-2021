@@ -19,9 +19,15 @@ const ANECDOTES = [
 
 const Title = ({ text }) => <h1 className='title'>{text}</h1>
 
+const Heading2 = ({ text }) => <h2 className='heading-2'>{text}</h2>
+
 const Quote = ({ text }) => (
   <blockquote className='blockquote'>
-    <p className='quote'>{text}</p>
+    {Array.isArray(text) ? (
+      <p className='quote'>{text[0]}</p>
+    ) : (
+      <p className='quote'>{text}</p>
+    )}
   </blockquote>
 )
 
@@ -39,10 +45,17 @@ const Vote = ({ votes, setVotes, selected }) => {
         icon={triangleUpIcon}
         a11yText='Upvote'
       />
-      <span className='votes__num'>{votes[selected]}</span>
+      <VoteNum votes={votes} selected={selected} />
     </div>
   )
 }
+
+const VoteNum = ({ votes, selected }) =>
+  Array.isArray(selected) ? (
+    <span className='votes__num'>{selected[1]}</span>
+  ) : (
+    <span className='votes__num'>{votes[selected]}</span>
+  )
 
 const ButtonIcon = ({ handleClick, icon, a11yText }) => (
   <button className='button' onClick={handleClick}>
@@ -52,7 +65,10 @@ const ButtonIcon = ({ handleClick, icon, a11yText }) => (
 )
 
 const ButtonText = ({ handleClick, text }) => (
-  <button className='button button--text position--center' onClick={handleClick}>
+  <button
+    className='button button--text position--center'
+    onClick={handleClick}
+  >
     {text}
   </button>
 )
@@ -79,7 +95,20 @@ const App = () => {
   const randomizeAnecdote = () => {
     const anecdote = Math.floor(Math.random() * ANECDOTES.length)
     setSelected(anecdote)
+    const maxVotes = Object.entries(votes).reduce((max, vote) =>
+      max[1] > vote[1] ? max : vote
+    )
   }
+
+  const getAnecdoteMostVotes = () => {
+    const maxVotes = Object.entries(votes).reduce((max, vote) =>
+      max[1] > vote[1] ? max : vote
+    )
+    return [ANECDOTES[maxVotes[0]], maxVotes[1]]
+  }
+
+  const isVotesEmpty = () =>
+    Object.keys(votes).every((vote) => votes[vote] === 0)
 
   return (
     <>
@@ -88,6 +117,19 @@ const App = () => {
         <Vote votes={votes} setVotes={setVotes} selected={selected} />
         <Quote text={ANECDOTES[selected]} />
       </div>
+      <section>
+        <Heading2 text='Most voted anecdote' />
+        <div className='vote-anecdote'>
+          {isVotesEmpty() ? (
+            <p>No votes registered yet</p>
+          ) : (
+            <>
+              <VoteNum votes={votes} selected={getAnecdoteMostVotes()} />
+              <Quote text={getAnecdoteMostVotes()} />
+            </>
+          )}
+        </div>
+      </section>
       <ButtonText handleClick={randomizeAnecdote} text='Randomize' />
       <Footer />
     </>

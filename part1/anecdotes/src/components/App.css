@@ -3,17 +3,22 @@
   padding: 0 1rem;
 }
 
+.heading-2 {
+  padding: 0 1rem;
+  margin-bottom: 0;
+}
+
 .vote-anecdote {
   display: flex;
   flex-direction: row;
   align-items: baseline;
+  margin-left: 1rem;
 }
 
 .votes {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-left: 1rem;
 }
 
 .votes__num {
