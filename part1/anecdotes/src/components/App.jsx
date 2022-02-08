@@ -95,9 +95,6 @@ const App = () => {
   const randomizeAnecdote = () => {
     const anecdote = Math.floor(Math.random() * ANECDOTES.length)
     setSelected(anecdote)
-    const maxVotes = Object.entries(votes).reduce((max, vote) =>
-      max[1] > vote[1] ? max : vote
-    )
   }
 
   const getAnecdoteMostVotes = () => {
