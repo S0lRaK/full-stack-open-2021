@@ -1,6 +1,7 @@
 {
   "name": "course-information",
   "version": "0.1.0",
+  "homepage": "https://carlosjgc.me/full-stack-open-2021/part1/course-information",
   "private": true,
   "dependencies": {
     "react": "^17.0.2",
