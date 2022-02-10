@@ -33,8 +33,10 @@ const Part = ({ part: { name, exercises } }) => (
 )
 
 const Total = ({ parts }) => {
-  const totalExercises =
-    parts[0].exercises + parts[1].exercises + parts[2].exercises
+  const totalExercises = parts.reduce(
+    (total, part) => total + part.exercises,
+    0
+  )
 
   return (
     <>
