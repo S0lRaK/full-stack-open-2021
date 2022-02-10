@@ -9,6 +9,7 @@ const Course = ({ course }) => {
     <>
       <Header text={course.name} />
       <Content parts={course.parts} />
+      <Total parts={course.parts} />
     </>
   )
 }
@@ -26,10 +27,21 @@ const Content = ({ parts }) => {
 }
 
 const Part = ({ part: { name, exercises } }) => (
-  <p className='part'>
+  <p className='padding-sides'>
     {name}: {exercises}
   </p>
 )
+
+const Total = ({ parts }) => {
+  const totalExercises =
+    parts[0].exercises + parts[1].exercises + parts[2].exercises
+
+  return (
+    <>
+      <p className='padding-sides total'>Total of {totalExercises} exercises</p>
+    </>
+  )
+}
 
 const Footer = () => (
   <footer className='position--bottom'>
