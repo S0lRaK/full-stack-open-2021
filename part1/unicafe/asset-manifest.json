@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/full-stack-open-2021/part1/unicafe/static/css/main.a1e092c2.css",
+    "main.js": "/full-stack-open-2021/part1/unicafe/static/js/main.e0764f92.js",
+    "index.html": "/full-stack-open-2021/part1/unicafe/index.html",
+    "main.a1e092c2.css.map": "/full-stack-open-2021/part1/unicafe/static/css/main.a1e092c2.css.map",
+    "main.e0764f92.js.map": "/full-stack-open-2021/part1/unicafe/static/js/main.e0764f92.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a1e092c2.css",
+    "static/js/main.e0764f92.js"
+  ]
+}
