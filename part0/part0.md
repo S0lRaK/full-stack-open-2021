@@ -2,7 +2,7 @@
 
 ## Fundamentals of Web apps
 
-- [New Note](./new-note)
+- [New Note](./new-note/)
 - [SPA](./spa)
 - [SPA New Note](./spa-new-note)
 
