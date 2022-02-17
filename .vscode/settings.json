@@ -1,7 +1,8 @@
 {
   "conventionalCommits.scopes": [
     "deps",
-    "git"
+    "git",
+    "ui"
   ],
   "cSpell.words": [
     "Unicafe"
