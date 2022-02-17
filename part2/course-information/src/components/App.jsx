@@ -20,7 +20,7 @@ const Content = ({ parts }) => {
   if (typeof parts === 'undefined' || parts.length === 0) {
     return <p>No content</p>
   }
-  
+
   return (
     <>
       {parts.map((part) => (
