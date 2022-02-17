@@ -16,8 +16,8 @@
 }
 
 .position--bottom {
-  position: absolute;
-  bottom: 2vmin;
+  margin-top: auto;
+  margin-bottom: 2vmin;
   width: 100%;
   display: flex;
   justify-content: center;
